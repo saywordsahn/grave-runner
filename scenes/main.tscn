@@ -1,0 +1,216 @@
+[gd_scene format=4 uid="uid://b6cq14w0x0psm"]
+
+[ext_resource type="PackedScene" uid="uid://c7oqgwj1xwqjl" path="res://scenes/chunk.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://hqy6i5eakh0j" path="res://scripts/main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://n6lc1s6il3ra" path="res://scenes/player.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://nb283b25wxeo" path="res://scripts/GUI/pause_menu.gd" id="5_7mycd"]
+[ext_resource type="Theme" uid="uid://cowep8juj56wl" path="res://fonts/new_theme.tres" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://dufhlhqenp5fh" path="res://assets/ui/suit_hearts.png" id="7_5vw27"]
+[ext_resource type="AudioStream" uid="uid://csdi7vcgnuabx" path="res://sounds/music/music1.mp3" id="9_85g3d"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7mycd"]
+sky_top_color = Color(0.06997751, 0.09471791, 0.12563434, 1)
+sky_horizon_color = Color(0.16186184, 0.16589642, 0.17397478, 1)
+
+[sub_resource type="Sky" id="Sky_272bh"]
+sky_material = SubResource("ProceduralSkyMaterial_7mycd")
+
+[sub_resource type="Environment" id="Environment_7mycd"]
+background_mode = 2
+sky = SubResource("Sky_272bh")
+ambient_light_source = 3
+reflected_light_source = 2
+fog_enabled = true
+fog_light_color = Color(0.13051835, 0.39453664, 0.50680697, 1)
+fog_density = 0.02
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
+volumetric_fog_albedo = Color(0.29388592, 0.43830845, 0.5388143, 1)
+
+[sub_resource type="GDScript" id="GDScript_o6xl0"]
+script/source = "extends CanvasLayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="OggPacketSequence" id="OggPacketSequence_0v4vj"]
+packet_data = Array[Array]([[PackedByteArray("AXZvcmJpcwAAAAABRKwAAAAAAAAAdwEAAAAAALgB")], [PackedByteArray("A3ZvcmJpcysAAABYaXBoLk9yZyBsaWJWb3JiaXMgSSAyMDEyMDIwMyAoT21uaXByZXNlbnQpAgAAAA0AAABBUlRJU1Q9S2VubmV5RwAAAENPTU1FTlRTPVNvdW5kIGdlbmVyYXRlZCBieSBHYW1lU3ludGggZnJvbSBUc3VnaSAod3d3LnRzdWdpLXN0dWRpby5jb20pAQ=="), PackedByteArray("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")], [PackedByteArray("lFpF7slsfISAuQ8JMeVF/Cz4PFO2PkvuV0b4mF8eh33TPkcb/YuSQU6Klidg+jdD+iDjH2hXaxMtAQ=="), PackedByteArray("3EYpBQyZAxOBfXUF6/L6xb8Xs/NtVbG8yJ88Mv6Us3keZzt57md3mXcCJc2g6RX/q8X/TA=="), PackedByteArray("VBILlY3KSkHDqweQRo5yj1up2MdGu365gApl9/TDv0T9R+Gn5/g/HZx4ThF1onGOEa9d5A=="), PackedByteArray("RAI9BkBapE2MM+4EaeTA10aTxpzJPhkf+JKF67LEbQXzg19y130pFXhglievpU1kbXJPAA=="), PackedByteArray("OjcksYCUvTSeI3imGfy/kvnlzZs385uZHpBgWrH80tonsla8Ofwa7mR71xuGTXj2fcq04Z+/On74aG4+23xa/X6lVe2FoiJGluXH43UVwR1VSX9ZOFBS8unqEcBfT3QRAcD09xUVn1EBeH4mYDI19eCzPzvNxbykBDfjK1pwT18CTS/wuQ6Qlzx7SQksLqIHTDAtIiipQAkF+dTUFDPwen7Gs/t+XjRhvNwY/Hg9Pw9TUwqY9P2HCy8iAMxKseD660qHi4uLX/99qV3F6TireXsnngnDlAyDKcC7NRqq5cYUr7ATjnMcsI+TAA=="), PackedByteArray("HmZ8XrcbiAMG8AMAAA1tyUJXCaYAUEkAIPXJFan5/byHrrV5OZjkizpWED1ZU2W3qRT1vc3t3LJ/tdCovotGkRGWZG4NVn7QGlqgYNbAYFnZanZGnozC7vvpov4YqGIOGHo7NmmAoJU/8DziCff9TNp8YHmeRFGa3FUrn8GU9QNEHeeGhx7RU9GUlcm834iiWZQBBbfJICMHNGww3eg2AA=="), PackedByteArray("Pmb8n7OclNjgJIN9AQAAAAAAAKgkAHCjjhVZkSUBAAA="), PackedByteArray("nmb879rDFMAB3gQAdR2OA6C0AgAAALB6/zygtaf/zcki3RztPG7d++KhlPNXr5rDQ4NlfTl3S7X9eohblfarfrdK7NNTifu41/a/6rX+d72+zM7lL7NH+tN76I97LBkE"), PackedByteArray("Pmb857aUNLHBAZbbxC5WJ2oKAAAA4MP9LbL/4MO5fx58ffjvf7OXX/8vOh4+DLf1mnwZcp1oXoFJUdG0dE/klzbFzzSFZ/iXu/iXVuRFGwA=")]])
+granule_positions = PackedInt64Array(0, 0, 4411)
+sampling_rate = 44100.0
+
+[sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_7mycd"]
+packet_sequence = SubResource("OggPacketSequence_0v4vj")
+tags = {
+"artist": "Kenney",
+"comments": "Sound generated by GameSynth from Tsugi (www.tsugi-studio.com)"
+}
+
+[sub_resource type="OggPacketSequence" id="OggPacketSequence_x6b8p"]
+packet_data = Array[Array]([[PackedByteArray("AXZvcmJpcwAAAAABRKwAAAAAAAAAdwEAAAAAALgB")], [PackedByteArray("A3ZvcmJpcysAAABYaXBoLk9yZyBsaWJWb3JiaXMgSSAyMDEyMDIwMyAoT21uaXByZXNlbnQpAgAAAA0AAABBUlRJU1Q9S2VubmV5RwAAAENPTU1FTlRTPVNvdW5kIGdlbmVyYXRlZCBieSBHYW1lU3ludGggZnJvbSBUc3VnaSAod3d3LnRzdWdpLXN0dWRpby5jb20pAQ=="), PackedByteArray("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")], [PackedByteArray("ZIZ3vBbIPy+c9tUk9GEkXLQWhKI3yhvb5fdlG9s3fONvvODJkydPnjx5Ytu2bQM="), PackedByteArray("HGKv/VX/at/8e8Q3nLcDNCDcfY5UKC93/+wFC3r9Bg=="), PackedByteArray("3EFL/5///Jy/sOGqfQDSAkoSmCxLcel2yq6XY3ovDi2TX/VA+bEFyHyvddED"), PackedByteArray("WmiM+//O+BkzukzfCry+3b07TgzDMACgKuoYY9QAgMb51BfcsqTb0n0qFpZT863Nv/jntVdeubJpfn5+fv7vS2E60cCz9R+drfO/3F2Bv9B6tv5FtoRaZB80/VXRAxX4y4nmdd49YaCEWtQm/vu5TK1nmuJn9+C/n4ep/ZmmqEX2wZJJmk/dz/nU/pw/m74l+4wKTIvD1P1MU/zMlpiW7AOlTM/5lPzCFAu+BP914dx0P9PUeqap9eweZGCQlxt+PAM=")]])
+granule_positions = PackedInt64Array(0, 0, 442)
+sampling_rate = 44100.0
+
+[sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_272bh"]
+packet_sequence = SubResource("OggPacketSequence_x6b8p")
+tags = {
+"artist": "Kenney",
+"comments": "Sound generated by GameSynth from Tsugi (www.tsugi-studio.com)"
+}
+
+[sub_resource type="GDScript" id="GDScript_tipki"]
+script/source = "extends Node
+
+
+func _ready():
+	# $AudioStreamPlayer.play()
+	pass
+"
+
+[node name="Main" type="Node3D" unique_id=1372628447]
+script = ExtResource("1_h2yge")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1218139952]
+environment = SubResource("Environment_7mycd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=465883588]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(0.69803923, 0.65882355, 1, 1)
+light_energy = 1.792
+light_indirect_energy = 1.475
+light_volumetric_fog_energy = 3.535
+shadow_enabled = true
+
+[node name="Chunk" parent="." unique_id=1191767432 instance=ExtResource("1_0xm2m")]
+
+[node name="Player" parent="." unique_id=100395679 instance=ExtResource("1_ig7tw")]
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1560851848]
+transform = Transform3D(1, 0, 0, 0, 0.8181498, 0.5750052, 0, -0.5750052, 0.8181498, 0, 1.7245462, 1.5895741)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1132214247]
+script = SubResource("GDScript_o6xl0")
+
+[node name="PauseMenu" type="Control" parent="UI" unique_id=1369217531]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_7mycd")
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/PauseMenu" unique_id=289010545]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseMenu/CenterContainer" unique_id=1049751690]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="UI/PauseMenu/CenterContainer/VBoxContainer" unique_id=484644512]
+layout_mode = 2
+theme = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 36
+text = "Resume"
+
+[node name="MainMenuButton" type="Button" parent="UI/PauseMenu/CenterContainer/VBoxContainer" unique_id=1480683789]
+layout_mode = 2
+theme = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 36
+text = "Main Menu"
+
+[node name="QuitButton" type="Button" parent="UI/PauseMenu/CenterContainer/VBoxContainer" unique_id=1947318714]
+layout_mode = 2
+theme = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 36
+text = "Quit"
+
+[node name="MouseEnteredAudio" type="AudioStreamPlayer" parent="UI/PauseMenu" unique_id=510697555]
+stream = SubResource("AudioStreamOggVorbis_7mycd")
+
+[node name="MouseClickAudio" type="AudioStreamPlayer" parent="UI/PauseMenu" unique_id=1472305403]
+stream = SubResource("AudioStreamOggVorbis_272bh")
+
+[node name="MoneyLabel" type="Label" parent="UI" unique_id=921652992]
+offset_left = 22.0
+offset_top = 13.0
+offset_right = 62.0
+offset_bottom = 88.0
+theme = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 128
+text = "$ 0"
+
+[node name="HealthControl" type="Control" parent="UI" unique_id=499839821]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HealthControl" unique_id=608368067]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 11.0
+offset_right = 1312.0
+offset_bottom = 139.0
+
+[node name="Heart1" type="TextureRect" parent="UI/HealthControl/HBoxContainer" unique_id=1541711908]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("7_5vw27")
+stretch_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="UI/HealthControl/HBoxContainer" unique_id=728516180]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("7_5vw27")
+stretch_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="UI/HealthControl/HBoxContainer" unique_id=154453778]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("7_5vw27")
+stretch_mode = 2
+
+[node name="SoundManager" type="Node3D" parent="." unique_id=1668065991]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="SoundManager" unique_id=502416160]
+
+[node name="MusicManager" type="Node" parent="." unique_id=2061878838]
+script = SubResource("GDScript_tipki")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicManager" unique_id=1099614064]
+stream = ExtResource("9_85g3d")
+volume_db = -80.0
+
+[node name="DeathTimer" type="Timer" parent="." unique_id=1403648681]
+wait_time = 3.0
+one_shot = true
+
+[node name="DeathTimer" type="Timer" parent="DeathTimer" unique_id=1070023149]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="on_lose_health" from="Player" to="." method="_on_player_lose_health"]
+[connection signal="on_money_pickup" from="Player" to="." method="update_money"]
+[connection signal="mouse_entered" from="UI/PauseMenu/CenterContainer/VBoxContainer/ResumeButton" to="UI/PauseMenu" method="_on_resume_button_mouse_entered"]
+[connection signal="pressed" from="UI/PauseMenu/CenterContainer/VBoxContainer/ResumeButton" to="UI/PauseMenu" method="_on_resume_button_pressed"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://cowep8juj56wl"]
+
+[ext_resource type="FontFile" uid="uid://61cfrw7bmfsv" path="res://fonts/Creepster-Regular.ttf" id="1_6xwt5"]
+
+[resource]
+default_font = ExtResource("1_6xwt5")

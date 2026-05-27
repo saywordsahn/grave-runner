@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ba6k1tfm0brfh"]
+
+[ext_resource type="Texture2D" uid="uid://dqeltatpet26f" path="res://assets/Particles/dirt_01.png" id="1_0np30"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ummdm"]
+transparency = 1
+albedo_texture = ExtResource("1_0np30")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t4rl6"]
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 5.38
+initial_velocity_max = 5.38
+
+[sub_resource type="QuadMesh" id="QuadMesh_0np30"]
+
+[node name="CollisionEffect" type="Node3D" unique_id=1842613675]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1379788249]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_ummdm")
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_t4rl6")
+draw_pass_1 = SubResource("QuadMesh_0np30")

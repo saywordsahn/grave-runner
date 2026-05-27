@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cypw0ht6ogdcl"]
+
+[ext_resource type="Texture2D" uid="uid://d2b66kicmjfox" path="res://Particle Textures/slash_04.png" id="1_nu5kf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ynogm"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_nu5kf")
+
+[sub_resource type="Curve" id="Curve_ynogm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8w7x5"]
+curve = SubResource("Curve_ynogm")
+
+[sub_resource type="Gradient" id="Gradient_6k2t3"]
+offsets = PackedFloat32Array(0.13595167, 0.1691843, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7w8og"]
+gradient = SubResource("Gradient_6k2t3")
+
+[sub_resource type="Curve" id="Curve_jr8jb"]
+_data = [Vector2(0, 0.47857147), 0.0, 4.76, 0, 0, Vector2(0.14005601, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.942309, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_t1mgt"]
+curve = SubResource("Curve_jr8jb")
+
+[sub_resource type="Curve" id="Curve_6pmgj"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 5), 0.0, -100.78571, 0, 0, Vector2(0.18487394, 0.8214288), 6.5948234, 6.5948234, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ynogm"]
+curve = SubResource("Curve_6pmgj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8w7x5"]
+particle_flag_damping_as_friction = true
+emission_shape = 1
+emission_sphere_radius = 0.1
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 50.0
+velocity_limit_curve = SubResource("CurveTexture_ynogm")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.79999995
+scale_curve = SubResource("CurveTexture_t1mgt")
+color = Color(2.454227, 2.454227, 2.454227, 1)
+color_ramp = SubResource("GradientTexture1D_7w8og")
+alpha_curve = SubResource("CurveTexture_8w7x5")
+
+[sub_resource type="QuadMesh" id="QuadMesh_6k2t3"]
+
+[node name="Hit" type="GPUParticles3D" unique_id=1038036678]
+material_override = SubResource("StandardMaterial3D_ynogm")
+amount = 40
+lifetime = 0.5
+explosiveness = 1.0
+fixed_fps = 0
+interpolate = false
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_8w7x5")
+draw_pass_1 = SubResource("QuadMesh_6k2t3")
